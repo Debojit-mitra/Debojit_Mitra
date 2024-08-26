@@ -239,7 +239,7 @@ gsap.utils.toArray("section").forEach((section) => {
   gsap.from(section.querySelectorAll("h2, p, .project-card, .blog-post"), {
     y: 50,
     opacity: 0,
-    duration: 1,
+    duration: 0.7,
     stagger: 0.2,
     scrollTrigger: {
       trigger: section,
@@ -838,3 +838,128 @@ function updateModeHint() {
       "Switch to dark mode for the Cosmic Canvas experience!";
   }
 }
+
+// Contact button functionality
+document
+  .getElementById("contactButton")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    const contactSection = document.querySelector("#contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // If there's no contact section, you can open an email client
+      window.location.href = "mailto:debojit16mitra@gmail.com";
+    }
+  });
+
+// Resume download functionality
+document
+  .getElementById("downloadResume")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // URL to your resume file
+    const resumeUrl =
+      "https://drive.google.com/file/d/1ffm4c7M4-Umwg2u_nJoTFLD43txQrvJC/view?usp=sharing";
+
+    // Create a temporary anchor element
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "Debojit_Mitra_Resume.pdf"; // Suggested filename for download
+
+    // Append to the body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+// Fun Zone Animations
+function animateFunZone() {
+  gsap.from("#fun .fun-zone-container", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    scrollTrigger: {
+      trigger: "#fun",
+      start: "top 80%",
+    },
+  });
+
+  gsap.from("#fun .controls button, #fun .color-picker-wrapper", {
+    opacity: 0,
+    y: 20,
+    stagger: 0.2,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: "#fun",
+      start: "top 80%",
+    },
+  });
+}
+
+// Button and Social Link Animations
+function animateButtons() {
+  gsap.from(".cta-buttons .cta-button", {
+    opacity: 0,
+    y: 20,
+    stagger: 0.2,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: ".cta-buttons",
+      start: "top 80%",
+    },
+  });
+
+  gsap.from(".social-links a", {
+    opacity: 0,
+    y: 20,
+    stagger: 0.1,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: ".social-links",
+      start: "top 90%",
+    },
+  });
+}
+
+// Skills Container and Image Container Animations
+function animateSkillsAndImage() {
+  gsap.from(".skills-container", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".skills-container",
+      start: "top 80%",
+    },
+  });
+
+  gsap.from(".skills-list li", {
+    opacity: 0,
+    y: 20,
+    stagger: 0.1,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: ".skills-container",
+      start: "top 80%",
+    },
+  });
+
+  gsap.from(".image-container", {
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".about-image",
+      start: "top 80%",
+    },
+  });
+}
+
+// Call these functions when the DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  animateFunZone();
+  animateButtons();
+  animateSkillsAndImage();
+});
