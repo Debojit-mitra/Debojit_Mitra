@@ -31,6 +31,7 @@ themeToggle.addEventListener("click", () => {
     : "dark";
   setTheme(newTheme);
   localStorage.setItem("theme", newTheme);
+  updateFunZoneVisibility(); // Call it here instead
 });
 
 // Listen for system theme changes
@@ -281,24 +282,106 @@ let highestScore = 0;
 let bubbleInterval;
 let isGameOver = false;
 
+function getRandomPastelColor() {
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 100%, 80%)`;
+}
+
 function createBubble() {
   bubbles.push({
     x: Math.random() * lightCanvas.width,
     y: lightCanvas.height + 20,
-    size: Math.random() * 20 + 10,
+    size: Math.random() * 30 + 10, // Slightly larger size range
     speed: bubbleSpeed,
+    color: getRandomPastelColor(),
   });
+}
+function getRandomButterFlyColor() {
+  const hues = [0, 30, 60, 180, 240, 280]; // Red, Orange, Yellow, Cyan, Blue, Purple
+  const hue = hues[Math.floor(Math.random() * hues.length)];
+  return `hsl(${hue}, 100%, 70%)`;
 }
 
 function createButterfly() {
   butterflies.push({
     x: Math.random() * lightCanvas.width,
     y: Math.random() * lightCanvas.height,
-    size: Math.random() * 10 + 5,
+    size: Math.random() * 15 + 10,
     speedX: Math.random() * 4 - 2,
     speedY: Math.random() * 4 - 2,
     wingAngle: 0,
+    color: getRandomButterFlyColor(),
+    flapSpeed: Math.random() * 0.2 + 0.1,
   });
+}
+
+function drawButterfly(butterfly) {
+  lightCtx.save();
+  lightCtx.translate(butterfly.x, butterfly.y);
+
+  // Draw body
+  lightCtx.beginPath();
+  lightCtx.ellipse(
+    0,
+    0,
+    butterfly.size / 8,
+    butterfly.size / 2,
+    0,
+    0,
+    Math.PI * 2
+  );
+  lightCtx.fillStyle = "black";
+  lightCtx.fill();
+
+  // Draw wings
+  lightCtx.rotate((Math.sin(butterfly.wingAngle) * Math.PI) / 6);
+
+  // Upper wings
+  lightCtx.beginPath();
+  lightCtx.moveTo(0, -butterfly.size / 4);
+  lightCtx.quadraticCurveTo(
+    butterfly.size,
+    -butterfly.size,
+    0,
+    -butterfly.size
+  );
+  lightCtx.quadraticCurveTo(
+    -butterfly.size,
+    -butterfly.size,
+    0,
+    -butterfly.size / 4
+  );
+  lightCtx.fillStyle = butterfly.color;
+  lightCtx.fill();
+
+  // Lower wings
+  lightCtx.beginPath();
+  lightCtx.moveTo(0, butterfly.size / 4);
+  lightCtx.quadraticCurveTo(
+    butterfly.size * 0.8,
+    butterfly.size * 0.8,
+    0,
+    butterfly.size * 0.75
+  );
+  lightCtx.quadraticCurveTo(
+    -butterfly.size * 0.8,
+    butterfly.size * 0.8,
+    0,
+    butterfly.size / 4
+  );
+  lightCtx.fillStyle = butterfly.color;
+  lightCtx.fill();
+
+  // Wing patterns
+  lightCtx.strokeStyle = "rgba(0, 0, 0, 0.5)";
+  lightCtx.lineWidth = 1;
+  for (let i = 1; i <= 3; i++) {
+    lightCtx.beginPath();
+    lightCtx.arc(0, 0, (butterfly.size * i) / 4, 0, Math.PI, true);
+    lightCtx.stroke();
+  }
+
+  lightCtx.restore();
 }
 
 function updateLightCanvas() {
@@ -307,9 +390,24 @@ function updateLightCanvas() {
   // Update and draw bubbles
   bubbles.forEach((bubble, index) => {
     bubble.y -= bubble.speed;
+
     lightCtx.beginPath();
     lightCtx.arc(bubble.x, bubble.y, bubble.size, 0, Math.PI * 2);
-    lightCtx.fillStyle = "rgba(255, 255, 255, 0.5)";
+    lightCtx.fillStyle = bubble.color;
+    lightCtx.globalAlpha = 0.7; // Set a constant transparency
+    lightCtx.fill();
+    lightCtx.globalAlpha = 1;
+
+    // Add a simple white highlight
+    lightCtx.beginPath();
+    lightCtx.arc(
+      bubble.x - bubble.size / 3,
+      bubble.y - bubble.size / 3,
+      bubble.size / 4,
+      0,
+      Math.PI * 2
+    );
+    lightCtx.fillStyle = "rgba(255,255,255,0.5)";
     lightCtx.fill();
 
     if (bubble.y + bubble.size < 0) {
@@ -319,66 +417,18 @@ function updateLightCanvas() {
       }
     }
   });
-
   // Update and draw butterflies
   butterflies.forEach((butterfly) => {
     butterfly.x += butterfly.speedX;
     butterfly.y += butterfly.speedY;
-    butterfly.wingAngle += 0.2;
+    butterfly.wingAngle += butterfly.flapSpeed;
 
     if (butterfly.x < 0 || butterfly.x > lightCanvas.width)
       butterfly.speedX *= -1;
     if (butterfly.y < 0 || butterfly.y > lightCanvas.height)
       butterfly.speedY *= -1;
 
-    lightCtx.save();
-    lightCtx.translate(butterfly.x, butterfly.y);
-    lightCtx.rotate((Math.sin(butterfly.wingAngle) * Math.PI) / 6);
-
-    lightCtx.beginPath();
-    lightCtx.moveTo(0, 0);
-    lightCtx.bezierCurveTo(
-      butterfly.size,
-      -butterfly.size,
-      2 * butterfly.size,
-      -butterfly.size,
-      2 * butterfly.size,
-      0
-    );
-    lightCtx.bezierCurveTo(
-      2 * butterfly.size,
-      butterfly.size,
-      butterfly.size,
-      butterfly.size,
-      0,
-      0
-    );
-    lightCtx.fillStyle = "rgba(255, 200, 200, 0.7)";
-    lightCtx.fill();
-
-    lightCtx.scale(-1, 1);
-    lightCtx.beginPath();
-    lightCtx.moveTo(0, 0);
-    lightCtx.bezierCurveTo(
-      butterfly.size,
-      -butterfly.size,
-      2 * butterfly.size,
-      -butterfly.size,
-      2 * butterfly.size,
-      0
-    );
-    lightCtx.bezierCurveTo(
-      2 * butterfly.size,
-      butterfly.size,
-      butterfly.size,
-      butterfly.size,
-      0,
-      0
-    );
-    lightCtx.fillStyle = "rgba(255, 200, 200, 0.7)";
-    lightCtx.fill();
-
-    lightCtx.restore();
+    drawButterfly(butterfly);
   });
 
   //drawScore(); // Add this line to draw the score
@@ -431,6 +481,7 @@ function toggleBubbles() {
   } else {
     startBubbleGame();
   }
+  updateScoreDisplay();
 }
 
 function toggleButterflies() {
@@ -472,11 +523,17 @@ function stopBubbleGame() {
 }
 
 function updateScoreDisplay() {
+  const scoreDisplay = document.querySelector(".score-display");
   const scoreElement = document.getElementById("currentScore");
   const highScoreElement = document.getElementById("highestScore");
 
-  if (scoreElement) scoreElement.textContent = score;
-  if (highScoreElement) highScoreElement.textContent = highestScore;
+  if (document.body.classList.contains("dark-mode")) {
+    scoreDisplay.style.display = "none";
+  } else {
+    scoreDisplay.style.display = "block";
+    if (scoreElement) scoreElement.textContent = score;
+    if (highScoreElement) highScoreElement.textContent = highestScore;
+  }
 }
 
 function popBubble(e) {
@@ -569,11 +626,27 @@ window.addEventListener("load", () => {
   initLightCanvas();
   resizeCanvas();
   updateDarkCanvas();
-  updateModeHint();
   updateFunZoneVisibility();
 });
 
 window.addEventListener("resize", initLightCanvas);
+
+function updateFunZoneVisibility() {
+  const lightModeFun = document.getElementById("lightModeFun");
+  const darkModeFun = document.getElementById("darkModeFun");
+  const isDarkMode = document.body.classList.contains("dark-mode");
+
+  if (isDarkMode) {
+    lightModeFun.style.display = "none";
+    darkModeFun.style.display = "block";
+  } else {
+    lightModeFun.style.display = "block";
+    darkModeFun.style.display = "none";
+  }
+
+  updateScoreDisplay();
+  updateModeHint();
+}
 
 //dark canvas
 function addStar(x, y) {
