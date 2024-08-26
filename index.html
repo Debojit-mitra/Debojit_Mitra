@@ -11,39 +11,47 @@
     <div class="cursor"></div>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#fun">Fun Zone</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode">
-          <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-            <mask class="moon" id="moon-mask">
-              <rect x="0" y="0" width="100%" height="100%" fill="white" />
-              <circle cx="24" cy="10" r="6" fill="black" />
-            </mask>
-            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-            <g class="sun-beams" stroke="currentColor">
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </g>
-          </svg>
-        </button>
+      <nav>
+        <div class="logo"></div> 
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#fun">Fun Zone</a></li>
+        </ul>
+        <div class="nav-controls">
+          <button id="theme-toggle" aria-label="toggle theme">
+            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+              <mask class="moon" id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+              </mask>
+              <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+              <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </g>
+            </svg>
+          </button>
+          <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <main>
         <section id="home">
-            <h1 class="glitch" data-text="Creative Developer">Debojit Mitra</h1>
+            <h1 class="glitch" data-text="Debojit Mitra">Debojit Mitra</h1>
             <p class="typewriter">Welcome to my digital playground.</p>
             <div class="scroll-indicator">
                 <div class="mouse"></div>
@@ -55,52 +63,200 @@
           <div class="about-container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-              <div class="about-text">
-                <p class="intro">Hi, I'm <span class="highlight">Debojit Mitra</span>. I'm a passionate developer with a knack for creating unique digital experiences.</p>
-                <div class="skills-container">
-                  <h3>My skills include:</h3>
-                  <ul class="skills-list">
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>React.js</li>
-                    <li>Node.js</li>
-                    <li>Python</li>
-                  </ul>
-                </div>
-                <p class="outro">I believe in the power of code to transform ideas into reality. Let's create something amazing together!</p>
-              </div>
               <div class="about-image">
                 <div class="image-container">
-                  <img src="your-image.jpg" alt="Debojit Mitra">
+                  <img src="assets/images/profile_img.webp" alt="Debojit Mitra">
                 </div>
+              </div>
+              <div class="about-text">
+                <p class="intro">
+                  Hi, I'm <span class="highlight">Debojit Mitra</span>. I'm a passionate developer with a knack for creating unique digital experiences.
+                </p>
+                <div class="skills-container">
+                  <h3>My Expertise</h3>
+                  <div class="skills-category">
+                    <h4>Programming Languages</h4>
+                    <ul class="skills-list">
+                      <li><span class="skill-icon">🖥️</span>Java</li>
+                      <li><span class="skill-icon">📱</span>Kotlin</li>
+                      <li><span class="skill-icon">🐍</span>Python</li>
+                      <li><span class="skill-icon">📱</span>Dart</li>
+                      <li><span class="skill-icon">🔧</span>C++</li>
+                      <li><span class="skill-icon">🔨</span>C</li>
+                      <li><span class="skill-icon">⚡</span>JavaScript</li>
+                      <li><span class="skill-icon">🔷</span>TypeScript</li>
+                    </ul>
+                  </div>
+                  <div class="skills-category">
+                    <h4>Web Technologies</h4>
+                    <ul class="skills-list">
+                      <li><span class="skill-icon">🌐</span>HTML</li>
+                      <li><span class="skill-icon">🎨</span>CSS</li>
+                      <li><span class="skill-icon">⚡</span>JavaScript</li>
+                      <li><span class="skill-icon">⚛️</span>React.js</li>
+                      <li><span class="skill-icon">🖥️</span>Node.js</li>
+                    </ul>
+                  </div>
+                  <div class="skills-category">
+                    <h4>Databases</h4>
+                    <ul class="skills-list">
+                      <li><span class="skill-icon">🗄️</span>Oracle Database</li>
+                      <li><span class="skill-icon">🐬</span>MySQL</li>
+                      <li><span class="skill-icon">🗃️</span>SQLite</li>
+                      <li><span class="skill-icon">🍃</span>MongoDB</li>
+                      <li><span class="skill-icon">🐘</span>PostgreSQL</li>
+                    </ul>
+                  </div>
+                  <div class="skills-category">
+                    <h4>Development Tools</h4>
+                    <ul class="skills-list">
+                      <li><span class="skill-icon">📱</span>Android Studio</li>
+                      <li><span class="skill-icon">💻</span>Visual Studio Code</li>
+                      <li><span class="skill-icon">☕</span>Net Beans</li>
+                    </ul>
+                  </div>
+                  <div class="skills-category">
+                    <h4>Frameworks & SDKs</h4>
+                    <ul class="skills-list">
+                      <li><span class="skill-icon">📱</span>Android SDK</li>
+                      <li><span class="skill-icon">📱</span>Flutter</li>
+                      <li><span class="skill-icon">🌶️</span>Flask</li>
+                      <li><span class="skill-icon">🌊</span>Streamlit</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="outro">
+                  I believe in the power of code to transform ideas into reality. Let's create something amazing together!
+                </p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
               </div>
             </div>
           </div>
         </section>
-        
 
-        <section id="projects">
-            <h2>My Projects</h2>
+        <section id="projects" class="section">
+          <div class="container">
+            <h2 class="section-title">My Projects</h2>
             <div class="project-grid">
-                <div class="project-card">
-                    <img src="project1.jpg" alt="Project 1">
-                    <h3>Project 1</h3>
-                    <p>Short description of the project.</p>
-                    <a href="#" class="btn">View Project</a>
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://i.ibb.co/0s37Zdq/Screenshot-7.png" alt="You See">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/You-See" class="btn">View Project</a>
+                  </div>
                 </div>
-                <div class="project-card">
-                    <img src="project2.jpg" alt="Project 2">
-                    <h3>Project 2</h3>
-                    <p>Short description of the project.</p>
-                    <a href="#" class="btn">View Project</a>
+                <div class="project-info">
+                  <h3>You See</h3>
+                  <p>An Android app for streaming anime, movies, series, and Asian dramas.</p>
                 </div>
-                <div class="project-card">
-                    <img src="project3.jpg" alt="Project 3">
-                    <h3>Project 3</h3>
-                    <p>Short description of the project.</p>
-                    <a href="#" class="btn">View Project</a>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://github.com/Debojit-mitra/Anify/raw/master/screenshots/Screenshot-1.jpg" alt="Anify">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/Anify" class="btn">View Project</a>
+                  </div>
                 </div>
+                <div class="project-info">
+                  <h3>Anify</h3>
+                  <p>An Android app that turns your home screen into a dynamic mix of fascinating facts and anime images.</p>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://raw.githubusercontent.com/Debojit-mitra/async.ai/master/Screenshots/1.jpg" alt="async.ai">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/async.ai" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>async.ai</h3>
+                  <p>AI chatbot designed to revolutionize the way you tackle computer science questions.</p>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://github.com/Debojit-mitra/MysticArtistry/blob/main/screenshots/Screenshot-1.png?raw=true" alt="Mystic Artistry">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/MysticArtistry" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Mystic Artistry</h3>
+                  <p>MysticArtistry, a website dedicated to showcasing and promoting the beauty and craftsmanship of Northeast Handicrafts.</p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://github.com/Debojit-mitra/Calculator/raw/master/screenshots/Screenshot-1.jpg" alt="Calculator">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/Calculator" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Calculator</h3>
+                  <p>A comprehensive scientific calculator Android application with a user-friendly interface and advanced mathematical functions.</p>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://github.com/Debojit-mitra/StoryFrame/raw/main/screenshots/Screenshot-1.png" alt="StoryFrame">
+                  <div class="project-overlay">
+                    <a href="#" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>StoryFrame</h3>
+                  <p>A Python Streamlit app that creates stories and images based on user prompts using Gemini and Replicate APIs.</p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://github.com/Debojit-mitra/AgriGroww/raw/f45b34f9b4c3b69a1637dea67fdfabd9f5735a6d/Images/main/Screenshot_20240105_123810.png?raw=true" alt="Agrigroww">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/AgriGroww" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Agrigroww</h3>
+                  <p>Agrigroww is a farmer advisory app that provides tailored guidance and tips to optimize farming practices.</p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://i.ibb.co/kcDG09n/splash-wallpaper.webp" alt="Splash Wallpaper">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/Splash-Wallpaper" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>Splash Wallpaper</h3>
+                  <p>My first Android app, featuring a wallpaper gallery with an admin panel, built using Kotlin.</p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image">
+                  <img src="https://camo.githubusercontent.com/84a6453f10eb4426c14a903c4da47a141d000d986724ef13cb345dae7ec577b7/68747470733a2f2f736f6369616c6966792e6769742e63692f4465626f6a69742d6d697472612f4669782d4d792d526f61642f696d6167653f666f6e743d496e746572266c616e67756167653d31266e616d653d31266f776e65723d31267061747465726e3d466c6f6174696e67253230436f6773267468656d653d4175746f" alt="Splash Wallpaper">
+                  <div class="project-overlay">
+                    <a href="https://github.com/Debojit-mitra/Fix-My-Road" class="btn">View Project</a>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <h3>FixMyRoad</h3>
+                  <p>An android app that  lets users report road issues with images and locations, aiding quick repairs and better road safety.</p>
+                </div>
+              </div>
+
             </div>
+          </div>
         </section>
 
         <section id="blog">

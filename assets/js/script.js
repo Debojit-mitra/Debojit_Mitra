@@ -322,3 +322,31 @@ function setTheme(theme) {
       preloader.classList.add('preloader-finish');
     }
   });
+
+// Mobile navigation toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('is-active');
+  navMenu.classList.toggle('active');
+  document.body.classList.toggle('nav-open');
+});
+
+// Close mobile menu when a link is clicked
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('is-active');
+    navMenu.classList.remove('active');
+    document.body.classList.remove('nav-open');
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    hamburger.classList.remove('is-active');
+    navMenu.classList.remove('active');
+    document.body.classList.remove('nav-open');
+  }
+});
