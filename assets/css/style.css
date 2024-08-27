@@ -858,6 +858,66 @@ body.dark-mode #lightModeFun {
   }
 }
 
+/* Footer Styles */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content p {
+  margin-bottom: 10px; /* Reduced space between copyright text and social links */
+}
+
+/* Ensure consistency between footer and main content social links */
+.footer-content .social-links-1 {
+  margin-top: 10px; /* Reduced space in footer */
+}
+
+.social-links-1 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px; /* Increased space between CTA buttons and social links */
+}
+
+.social-links-1 a {
+  color: var(--text-color);
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-links-1 a:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-links-1 {
+    margin-top: 20px; /* Adjusted for mobile */
+  }
+
+  .footer-content .social-links-1 {
+    margin-top: 10px; /* Kept consistent in footer for mobile */
+  }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .fun-zone-container {
@@ -944,6 +1004,7 @@ body.dark-mode #lightModeFun {
   .cta-buttons {
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 40px;
   }
 
   .cta-button {
@@ -961,70 +1022,6 @@ body.dark-mode #lightModeFun {
   .mode-specific-fun {
     transition: none;
     animation: none;
-  }
-}
-/* Footer */
-footer {
-  background-color: var(--secondary-color);
-  padding: 20px 0;
-  text-align: center;
-
-  .social-links {
-    display: flex;
-    gap: 20px;
-  }
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-  width: 100%; /* Ensure full width */
-}
-
-.social-links a {
-  color: var(--text-color);
-  font-size: 24px;
-  transition: color 0.3s, transform 0.3s;
-}
-
-.social-links a:hover {
-  color: var(--primary-color);
-  transform: translateY(-3px);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .social-links {
-    justify-content: center;
   }
 }
 
@@ -1134,6 +1131,10 @@ footer {
     flex-direction: column;
     gap: 20px;
   }
+
+  .cta-buttons {
+    margin-bottom: 30px;
+  }
   .cta-button {
     min-width: 130px;
     padding: 10px 15px;
@@ -1177,6 +1178,7 @@ footer {
   .cta-buttons {
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 30px;
   }
 
   .cta-button {
