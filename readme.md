@@ -22,12 +22,6 @@ Welcome to the behind-the-scenes of my digital wonderland! This repository house
 - Vanilla JavaScript (Because sometimes, less is more!)
 - GSAP for smooth animations
 
-## 🚀 Quick Start
-
-1. Clone this repo: `git clone https://github.com/your-username/portfolio-website.git`
-2. Open `index.html` in your browser
-3. Voila! Start exploring
-
 ## 🎨 Customization
 
 Feel free to fork this repo and make it your own! Here are some quick customization tips:

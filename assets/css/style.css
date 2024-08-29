@@ -376,7 +376,6 @@ h2 {
 /* About Section Styles */
 #about {
   padding: 100px 0;
-  background-color: var(--background-color);
 }
 
 .about-container {
@@ -504,11 +503,11 @@ h2 {
 }
 
 .skills-category {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .skills-category h4 {
-  margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .outro {
@@ -679,29 +678,6 @@ h2 {
 .project-card:hover {
   animation: none;
 }
-
-/* Blog Section 
-.blog-posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.blog-post {
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  padding: 20px;
-  transition: transform 0.3s;
-}
-
-.blog-post:hover {
-  transform: translateY(-5px);
-}
-
-.post-meta {
-  color: #777;
-  font-size: 0.9rem;
-} */
 
 /* Fun Zone Styles */
 #fun {
@@ -899,6 +875,24 @@ footer {
 
 .social-links-1 a:hover {
   color: var(--primary-color);
+}
+
+.animated-heart {
+  display: inline-block;
+  color: red;
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Responsive adjustments */
@@ -1148,6 +1142,9 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .typewriter {
+    font-size: 0.8rem;
+  }
   .glitch {
     font-size: 2.5rem;
   }
@@ -1309,7 +1306,7 @@ footer {
   }
 
   .typewriter {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 }
 

@@ -959,6 +959,16 @@ function animateSkillsAndImage() {
       start: "top 80%",
     },
   });
+
+  gsap.from(".fun", {
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".fun-zone-container",
+      start: "top 80%",
+    },
+  });
 }
 
 // Call these functions when the DOM is loaded
