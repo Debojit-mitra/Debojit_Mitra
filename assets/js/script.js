@@ -226,7 +226,11 @@ function typeWriter() {
   if (i < text.length) {
     typewriterText.textContent += text.charAt(i);
     i++;
-    setTimeout(typeWriter, 100);
+    setTimeout(typeWriter, 50);
+  } else {
+    // Removing the cursor after typing is complete
+    typewriterText.style.borderRight = "none";
+    typewriterText.style.animation = "none";
   }
 }
 
