@@ -865,7 +865,7 @@ document
 
     // URL to your resume file
     const resumeUrl =
-      "https://drive.google.com/file/d/1ffm4c7M4-Umwg2u_nJoTFLD43txQrvJC/view?usp=sharing";
+      "https://drive.google.com/file/d/1j1eJPQZ8DeORvRNc9bomMBd8J2Lxq4Mt/view?usp=sharing";
 
     // Create a temporary anchor element
     const link = document.createElement("a");
